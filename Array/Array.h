@@ -57,7 +57,7 @@ public:
     void insertArr(int index, T value) {
         assert(size>=0&&size>=index);
         if(size>=cap)
-            new_cap(cap+1);
+            new_cap(cap*2);
         for(int i = size ; i > index-1 ; --i)
             array[i] = array[i-1];
         array[index] = value;
