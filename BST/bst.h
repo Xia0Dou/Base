@@ -101,37 +101,43 @@ private:
         if(node==NULL)
             return node;
         if(value==node->val){                //删除节点左右子树均为空，直接删除
-            if(node->left==NULL&&node->right==NULL){
-                delete node;
-            }
+//            if(node->left==NULL&&node->right==NULL){
+//                delete node;
+//            }
 
-            else if(node->left==NULL){      //删除节点左子树为空
-                Node * newNode = node->right;
-                delete node;
-                return newNode;
+            if(node->left==NULL){      //删除节点左子树为空
+                node = node->right;
+                //delete node;
             }
 
             else if(node->right==NULL){     //删除节点右子树为空
-                Node * newNode = node->left;
-                delete node;
-                return newNode;
+                node = node->left;
+                //delete node;
+                //return newNode;
             }
 
                 //删除节点左右子树均不为空，找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
                 // 用这个节点顶替待删除节点的位置
             else{
-                Node* newNode = getmin(node->right);
-                delete getmin(node->right);
-                newNode->right = node->right;
-                newNode->left = node->left;
-                delete node;
-                return  newNode;
+                Node* newNode = node->right;
+                while(newNode->left)
+                    newNode = newNode->left;
+                node->val = newNode->val;
+                node->right = remove(node->right,newNode->val);
+
+//                delete getmin(node->right);
+//                newNode->right = node->right;
+//                newNode->left = node->left;
+//                delete node;
+//                return  newNode;
             }
         }
         else if(value<node->val)
-            return remove(node->left,value);
+            node->left = remove(node->left,value);
         else
-            return remove(node->right,value);
+            node->right = remove(node->right,value);
+
+        return node;
     }
 
 public:
