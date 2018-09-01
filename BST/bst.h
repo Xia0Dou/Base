@@ -214,11 +214,11 @@ private:
         if(node==NULL)
             return ;
 
-        preOrder(node->left);
+        inOrder(node->left);
 
         std::cout<<node->val<<" ";
 
-        preOrder(node->right);
+        inOrder(node->right);
 
     }
 
@@ -260,9 +260,9 @@ private:
         if(node==NULL)
             return ;
 
-        preOrder(node->left);
+        postOrder(node->left);
 
-        preOrder(node->right);
+        postOrder(node->right);
 
         std::cout<<node->val<<" ";
 
