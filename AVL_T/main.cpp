@@ -23,16 +23,6 @@ int main() {
 
     cout<<tree.isAVL()<<endl;   //显示是否为AVL树
 
-    while(!tree.isAVL()){       //转化为AVL树
-        tree.avl();
-    }
-
-
-    tree.levelOrder();
-
-    cout<<tree.isAVL()<<endl;
-
-
 
     tree.remove(7);
 
@@ -40,14 +30,6 @@ int main() {
 
     cout<<tree.isAVL()<<endl;
 
-    while(!tree.isAVL()){
-        tree.avl();
-    }
-
-    tree.levelOrder();
-
-    cout<<tree.isAVL()<<endl;
-
-    //std::cout << "Hello, World!" << std::endl;
+    
     return 0;
 }
