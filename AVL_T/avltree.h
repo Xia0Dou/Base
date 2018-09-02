@@ -137,6 +137,8 @@ public:
 
     void insert(T value){           //添加元素
         root = insert(root,value);
+        if(!isAVL())
+            avl();
     }
 
 private:
@@ -218,6 +220,8 @@ private:
 public:
     void remove(T value){              //删除节点
         root = remove(root,value);
+        if(!isAVL())
+            avl();
     }
 
 private:
